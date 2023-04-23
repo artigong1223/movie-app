@@ -1,0 +1,18 @@
+.spinner {
+  margin-top: 60px;
+}
+.errorMessage {
+  position: absolute;
+  z-index: 100;
+  width: 98vw;
+}
+.pagination {
+  margin-top: 60px;
+  text-align: center;
+}
+.offline {
+  width: 92vw;
+}
+.tabs {
+  align-items: center;
+}
