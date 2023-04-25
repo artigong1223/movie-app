@@ -10,6 +10,7 @@
   margin-right: 8px;
 }
 .card {
+  position: relative;
   width: 45vw;
   height: 281px;
   border-radius: 0;
@@ -18,8 +19,8 @@
   box-shadow: 0px 4px 12px 0px #00000026;
 }
 .image {
-  width: 183px !important;
-  height: 281px !important;
+  max-width: 183px !important;
+  max-height: 281px !important;
 }
 .placeholder {
   height: 250px;
@@ -40,4 +41,120 @@
   right: 10px;
   text-align: center;
   line-height: 3;
+}
+.rate {
+  position: absolute;
+  bottom: 10px;
+}
+.ant-card-body {
+  flex-wrap: nowrap !important;
+}
+
+@media (min-width: 768px) and (max-width: 1439px) {
+  .title,
+  .genres__list,
+  .date {
+    margin-left: 103px;
+    margin-top: 10px;
+  }
+  .rate {
+    right: 10px;
+  }
+  h2 {
+    margin-bottom: 0 !important;
+  }
+  .image {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: 90px !important;
+    height: 135px !important;
+  }
+  .ant-card-body {
+    flex-wrap: wrap !important;
+  }
+  .ant-card-grid {
+    width: 98% !important;
+  }
+}
+@media (max-width: 425px) {
+  .title,
+  .genres__list,
+  .date {
+    margin-left: 75px;
+  }
+  .genres__list {
+	overflow: auto;
+	scrollbar-width: none;
+	white-space: nowrap;
+  }
+  .genres__list::-webkit-scrollbar {
+    width: 0;
+	height: 0;
+  }
+  .genres__list::-o-scrollbar {
+		width: 0;
+		height: 0;
+  }
+  .genres__list::-moz-scrollbar {
+		width: 0;
+		height: 0;
+  }
+  .genres__list::-ms-scrollbar {
+		width: 0;
+		height: 0;
+  }
+  h2 {
+    margin-bottom: 0 !important;
+  }
+  .title {
+	font-size: 20px !important;
+  }
+  .card {
+	overflow: hidden;
+  }
+  .description {
+	font-size: 12px !important;
+  }
+  .ant-card {
+    width: 95vw;
+	margin: 12px 0 !important;
+  }
+  .ant-space-item {
+	width: 85vw
+  }
+  .ant-card-grid {
+	padding-left: 10px !important;
+    width: 98% !important;
+  }
+  .image {
+	position: absolute;
+    top: 10px;
+    left: 10px;
+	width: 66px !important;
+	height: 100px !important;
+  }
+  .rate {
+	bottom: 5px;
+	right: 15px;
+  }
+}
+
+
+@media (min-width: 426px) and (max-width: 996px) {
+	.title,
+	.genres__list,
+	.date {
+	  margin-left: 113px;
+	}
+	.ant-card-grid {
+		width: 98% !important;
+	}
+	.ant-card {
+		width: 95vw;
+		margin: 12px 0 !important;
+	  }
+	.ant-space-item {
+		width: 85vw
+	}
 }

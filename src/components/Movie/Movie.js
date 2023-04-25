@@ -27,19 +27,21 @@ export default class Movie extends React.Component {
     });
   };
   descGenres = (genres, genresList) => {
-    return genres.map((g) => {
-      let genrArr = [];
-      genresList.forEach((a) => {
-        if (g === a.id) {
-          genrArr.push(a.name);
-        }
-      });
-      return (
-        <span className="genres" key={g}>
-          <Button>{genrArr}</Button>
-        </span>
-      );
-    });
+    return genres
+      .map((g) => {
+        let genrArr = [];
+        genresList.forEach((a) => {
+          if (g === a.id) {
+            genrArr.push(a.name);
+          }
+        });
+        return (
+          <span className="genres" key={g}>
+            <Button>{genrArr}</Button>
+          </span>
+        );
+      })
+      .slice(0, 3);
   };
   descOverview = (arr, num) => {
     let arrSplit = arr.split(' ');
@@ -98,7 +100,7 @@ export default class Movie extends React.Component {
           <Space direction="vertical">
             <Row justify={'space-between'} className="row">
               <Title className="title" level={2}>
-                {title.length > 20 ? this.descOverview(title, 17) : title}
+                {title.length > 20 ? this.descOverview(title, 13) : title}
               </Title>
               <Text
                 className="rated"
@@ -109,10 +111,15 @@ export default class Movie extends React.Component {
                 {ratedValue}
               </Text>
             </Row>
-            <Text type="secondary">{date ? format(parse(date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy') : null}</Text>
-            <div>{this.descGenres(genres, genresList)}</div>
-            <Text>{description.length > 120 ? this.descOverview(description, 240) : description}</Text>
+            <Text className="date" type="secondary">
+              {date ? format(parse(date, 'yyyy-MM-dd', new Date()), 'MMMM dd, yyyy') : null}
+            </Text>
+            <div className="genres__list">{this.descGenres(genres, genresList)}</div>
+            <Text className="description">
+              {description.length > 120 ? this.descOverview(description, 240) : description}
+            </Text>
             <Rate
+              className="rate"
               onChange={(value) => {
                 handleRatingChange(value);
                 this.setRatedValue(value);
