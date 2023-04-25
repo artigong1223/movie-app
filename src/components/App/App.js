@@ -1,7 +1,7 @@
 import React from 'react';
 import { debounce } from 'lodash';
 import { Col, Spin, Alert, Pagination, Tabs } from 'antd';
-import { Offline } from 'react-detect-offline';
+import { Offline, Online } from 'react-detect-offline';
 
 import ApiService from '../../api/ApiService';
 import SearchMovie from '../SearchMovie/SearchMovie';
@@ -142,25 +142,27 @@ export default class App extends React.Component {
         children: (
           <>
             <Col>
-              <SearchMovie onSearch={this.onSearch} />
-              {spinner}
-              <MovieList
-                movies={movies}
-                genres={genres}
-                loading={loading}
-                handleRatingChange={this.handleRatingChange}
-                search={search}
-                errorMessage={errorMessage}
-              />
-              {Object.keys(movies).length && !loading ? (
-                <Pagination
-                  className="pagination"
-                  onChange={this.onPagination}
-                  defaultCurrent={1}
-                  pageSize={20}
-                  total={total}
+              <Online>
+                <SearchMovie onSearch={this.onSearch} />
+                {spinner}
+                <MovieList
+                  movies={movies}
+                  genres={genres}
+                  loading={loading}
+                  handleRatingChange={this.handleRatingChange}
+                  search={search}
+                  errorMessage={errorMessage}
                 />
-              ) : null}
+                {Object.keys(movies).length && !loading ? (
+                  <Pagination
+                    className="pagination"
+                    onChange={this.onPagination}
+                    defaultCurrent={1}
+                    pageSize={20}
+                    total={total}
+                  />
+                ) : null}
+              </Online>
               <Offline>
                 <Alert className="offline" message="Ошибка!" description="Нет подключения к Интернету" type="info" />
               </Offline>
@@ -174,25 +176,27 @@ export default class App extends React.Component {
         children: (
           <>
             <Col>
-              {spinner}
-              <MovieList
-                movies={movies}
-                genres={genres}
-                loading={loading}
-                handleRatingChange={this.handleRatingChange}
-                search={search}
-                errorMessage={errorMessage}
-              />
-              {Object.keys(movies).length && !loading ? (
-                <Pagination
-                  className="pagination"
-                  onChange={this.onPagination}
-                  defaultCurrent={1}
-                  pageSize={20}
-                  total={movies.length}
+              <Online>
+                {spinner}
+                <MovieList
+                  movies={movies}
+                  genres={genres}
+                  loading={loading}
+                  handleRatingChange={this.handleRatingChange}
+                  search={search}
+                  errorMessage={errorMessage}
                 />
-              ) : null}
-              <RatedList rated={ratedFilms} />
+                {Object.keys(movies).length && !loading ? (
+                  <Pagination
+                    className="pagination"
+                    onChange={this.onPagination}
+                    defaultCurrent={1}
+                    pageSize={20}
+                    total={movies.length}
+                  />
+                ) : null}
+                <RatedList rated={ratedFilms} />
+              </Online>
               <Offline>
                 <Alert className="offline" message="Ошибка!" description="Нет подключения к Интернету" type="info" />
               </Offline>
