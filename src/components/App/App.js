@@ -235,6 +235,7 @@ export default class App extends React.Component {
                 search={search}
                 errorMessage={errorMessage}
               />
+              <RatedList rated={ratedFilms} />
               {Object.keys(movies).length && !loading ? (
                 <Pagination
                   className="pagination"
@@ -244,7 +245,6 @@ export default class App extends React.Component {
                   total={movies.length}
                 />
               ) : null}
-              <RatedList rated={ratedFilms} />
             </Col>
           </>
         ),

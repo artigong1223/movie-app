@@ -27,17 +27,20 @@ export default class Movie extends React.Component {
     });
   };
   descGenres = (genres, genresList) => {
+    if (genres.length === 0) {
+      return <span className="genres">Genre not found</span>;
+    }
     return genres
       .map((g) => {
-        let genrArr = [];
+        let genreArr = [];
         genresList.forEach((a) => {
           if (g === a.id) {
-            genrArr.push(a.name);
+            genreArr.push(a.name);
           }
         });
         return (
           <span className="genres" key={g}>
-            <Button>{genrArr}</Button>
+            <Button>{genreArr}</Button>
           </span>
         );
       })
