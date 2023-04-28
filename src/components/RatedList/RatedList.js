@@ -5,7 +5,7 @@ import './rated-list.css';
 
 function RatedList(props) {
   RatedList.propTypes = {
-    rated: propTypes.array,
+    rated: propTypes.arrayOf(propTypes.object),
   };
   if (props.rated.length === 0) {
     return (

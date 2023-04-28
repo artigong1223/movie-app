@@ -5,31 +5,7 @@ export default class ApiService {
     const response = await axios.get(
       `https://api.themoviedb.org/3/search/movie?api_key=d89e45a2906da5dce8ae832c65d913fe&query=${request}&page=${page}`
     );
-    return this._transformData(response.data);
-  };
-  _transformData = (data) => {
-    const _transformedArr = [];
-    data.results.forEach((film) => {
-      const transformedFilm = {
-        id: film.id,
-        title: film.title,
-        date: film.release_date,
-        picture: film.poster_path,
-        description: film.overview,
-        genres: film.genre_ids,
-        totalFilms: data.total_results,
-        votes: film.vote_average,
-        rating: film.rating,
-      };
-      _transformedArr.push(transformedFilm);
-    });
-    return _transformedArr;
-  };
-  getPopular = async () => {
-    const response = await axios.get(
-      'https://api.themoviedb.org/3/movie/popular?api_key=d89e45a2906da5dce8ae832c65d913fe&page=1'
-    );
-    return this._transformData(response.data);
+    return response.data;
   };
   getGenre = async () => {
     const response = await axios.get(
@@ -62,7 +38,6 @@ export default class ApiService {
     const response = await axios.get(
       `https://api.themoviedb.org/3/guest_session/${sessionId}/rated/movies?api_key=d89e45a2906da5dce8ae832c65d913fe&sort_by=created_at.asc`
     );
-
-    return this._transformData(response.data);
+    return response.data;
   };
 }

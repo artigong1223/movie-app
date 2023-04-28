@@ -19,8 +19,10 @@
   box-shadow: 0px 4px 12px 0px #00000026;
 }
 .image {
-  max-width: 183px !important;
-  max-height: 281px !important;
+  width: 183px !important;
+  height: 281px !important;
+  
+  margin: 0 auto;
 }
 .placeholder_pos {
   height: 250px;
@@ -52,9 +54,9 @@
 
 @media (min-width: 768px) and (max-width: 1439px) {
   .placeholder {
-	position: absolute;
-	top: -65px !important;
-	left: 65px !important;
+    position: absolute;
+    top: -65px !important;
+    left: 65px !important;
   }
   .title,
   .genres__list,
@@ -84,9 +86,9 @@
 }
 @media (max-width: 425px) {
   .placeholder {
-	position: absolute;
-	top: -85px !important;
-	left: 40px !important;
+    position: absolute;
+    top: -85px !important;
+    left: 40px !important;
   }
   .title,
   .genres__list,

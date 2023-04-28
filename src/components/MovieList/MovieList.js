@@ -5,14 +5,14 @@ import Movie from '../Movie/Movie';
 
 import './movie-list.css';
 
-function FilmList(props) {
-  FilmList.propTypes = {
+function MovieList(props) {
+  MovieList.propTypes = {
     movie: propTypes.arrayOf(propTypes.node),
     genres: propTypes.arrayOf(propTypes.object),
     handleRatingChange: propTypes.func,
     loading: propTypes.bool,
     search: propTypes.string,
-    errorMessage: propTypes.func,
+    errorMessage: propTypes.object,
   };
   const filmArr = props.movies.map((movie) => {
     const { id } = movie;
@@ -38,4 +38,4 @@ function FilmList(props) {
   );
 }
 
-export default FilmList;
+export default MovieList;
